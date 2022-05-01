@@ -30,7 +30,7 @@ client = discord.Client()
 async def on_ready():
     print("now online: {0.user}".format(client))
 
-
+#hi is this working hi daniel
 
 @client.event #event triggers whenever a message is recieved
 async def on_message(message):
