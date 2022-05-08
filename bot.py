@@ -25,11 +25,6 @@ client = discord.Client()
 
 
 
-
-
-
-
-
 #declare victory (for coming online without crashing)
 @client.event
 async def on_ready():
@@ -55,6 +50,8 @@ async def on_message(message):
     #this is very stupid but with this, if someone just says the word slay then the bot will respond with an image of a cat that just says "slay"
     if message.content.startswith("slay"): await message.channel.send("https://cataas.com/cat/says/"+message.content)
     if message.content.startswith("SLAY"): await message.channel.send("https://cataas.com/cat/says/"+message.content)
+    if message.content.startswith("Slay"): await message.channel.send("https://cataas.com/cat/says/"+message.content)
+
 
 
     #silly stuff that achieves nothing
@@ -67,6 +64,7 @@ async def on_message(message):
 
 #THE PROBLEM IS NOW SOLVEABLE
 #(currently this word will just kill the whole bot)
+#TODO: just recreate this in a smaller program from scratch
     if message.content.startswith("say"):
         def addSyntax(phrase):
             words = ""
@@ -88,27 +86,7 @@ async def on_message(message):
 
         print(catStage2)
 
-        '''''
 
-        #idk why this wont work but i need to sleep
-        
-        #await message.channel.send:()
-        words = (message.content)
-        for things in words:
-            if things in " _":
-                words = words + "%20"
-            else:
-                words = words + things
-        return words
-
-        catStage1 = add_syntax(words)
-        catStage2 = catStage1.replace("say","",1)
-
-
-        await message.channel.send(catStage2)
-
-
-'''
 
 
     #example of how cataas urls work: https://cataas.com/cat/says/hello%20world
