@@ -7,12 +7,11 @@ In the file write:
 {
     "TOKEN": "paste your token here"
 }
+
+you could also just paste your token in the line at the bottom
 """
 import discord
 import json
-
-#catsaymessage = (message.content)
-
 
 
 
@@ -25,16 +24,22 @@ with open('config.json') as f:
 client = discord.Client()
 
 
+
+
+
+
+
+
 #declare victory (for coming online without crashing)
 @client.event
 async def on_ready():
     print("now online: {0.user}".format(client))
 
-#hi is this working hi daniel
+
 
 @client.event #event triggers whenever a message is recieved
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == client.user:#dont respond to yourself please mr bot
         return
     #make sure that we are actually getting the input and that the format is correct for embeding
     if message.content.startswith("test"):
@@ -47,8 +52,43 @@ async def on_message(message):
     #this is just so that the bot works in some capacity while it is being developed.
     if message.content.startswith("cat"): await message.channel.send("https://cataas.com/cat/says/"+message.content)
 
+    #this is very stupid but with this, if someone just says the word slay then the bot will respond with an image of a cat that just says "slay"
+    if message.content.startswith("slay"): await message.channel.send("https://cataas.com/cat/says/"+message.content)
+    if message.content.startswith("SLAY"): await message.channel.send("https://cataas.com/cat/says/"+message.content)
 
-    if message.content.startswith("say"): 
+
+    #silly stuff that achieves nothing
+    if message.content.startswith("hello world"): await message.channel.send("https://cataas.com/cat/says/hello%20world")
+
+
+
+
+#take the message that begins with say, replace the spaces between each word with %20 and remove "say" from the string. then output the link
+
+#THE PROBLEM IS NOW SOLVEABLE
+#(currently this word will just kill the whole bot)
+    if message.content.startswith("say"):
+        def addSyntax(phrase):
+            words = ""
+        for things in words:
+            if things in " _":
+                words = words + "%20"
+        else:
+            words = words + things
+            return words
+
+        
+
+
+
+
+        print(message.content)
+        catStage1 = addSyntax(words)
+        catStage2 = catStage1.replace("say","",1)
+
+        print(catStage2)
+
+        '''''
 
         #idk why this wont work but i need to sleep
         
@@ -68,10 +108,11 @@ async def on_message(message):
         await message.channel.send(catStage2)
 
 
+'''
 
 
-
-    #example of how cataas urls work: https://cataas.com/cat/says/hello%20world    
+    #example of how cataas urls work: https://cataas.com/cat/says/hello%20world
+    #note the %20 between the words.
 
 
 
